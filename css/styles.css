@@ -1,15 +1,15 @@
-html{
-    scroll-behavior: smooth;
+html {
+  scroll-behavior: smooth;
 }
 
-body{
+body {
   background-color: #ddd;
   font-size: 18px;
   margin: 0;
   padding: 0;
 }
 
-h1{
+h1 {
   background-color: transparent;
   font-size: 50px;
   line-height: 1;
@@ -17,28 +17,28 @@ h1{
   text-align: center;
 }
 
-h2{
+h2 {
   font-size: 32px;
   line-height: 1.5;
 }
 
-nav li{
-  display:inline;
-  padding-right:20px;
-
+nav li {
+  display: inline;
+  padding-right: 20px;
 }
 
-nav a{
+nav a {
   color: black;
   font-weight: bold;
   text-decoration: none;
 }
 
-nav a:hover{
+nav a:hover {
   text-decoration: underline;
+  text-decoration-style: wavy;
 }
 
-.skip a{
+.skip a {
   background: white;
   left: 0;
   padding: 6px;
@@ -46,12 +46,15 @@ nav a:hover{
   transition: top 1s ease-out;
   z-index: 1;
   /*Your code here - position relative to the parent */
-  /*Your code here - place 500px left and 40px higher */;
+  position: relative;
+  /*Your code here - place 500px left and 40px higher */
+  left: -500px;
+  top: -40px;
 }
 
-.skip a:focus{
+.skip a:focus {
   background: white;
-  top: 0;
+  top: 20px;
   left: 0;
   padding: 6px;
   -webkit-transition: top 1s ease-out;
@@ -69,7 +72,7 @@ link to the exact top of the page.*/
 /*Add the selector and code to put a 2px black
 border around all elements in focus.*/
 
-footer{
+footer {
   background-color: black;
   color: white;
   grid-column: 1 / -1;
@@ -78,27 +81,31 @@ footer{
   text-align: center;
 }
 
-nav{
+nav {
   background-color: #ddd;
   padding: 20px 0;
-  text-align: center;
+  text-align: left;
   /*Your code here*/
   /*Span the top row*/
+  grid-column: 1 / -1;
 }
 
-header{
+header {
   background-attachment: fixed; /* Parallax effect */
-  background-position: center;  /* Parallax effect */
+  background-position: center; /* Parallax effect */
   background-repeat: no-repeat; /* Parallax effect */
-  background-size: cover;       /* Parallax effect */
+  background-size: cover; /* Parallax effect */
   color: white;
-  height: 400px;                /* Parallax effect */
+  height: 400px; /* Parallax effect */
   /* Your code here */
   /* Set background-image to header.jpg in the images folder */
+  background: #858585 url("../images/header.jpg");
+  min-height: 400px;
   /* Span one row */
+  grid-column: 1 / -1;
 }
 
-header p{
+header p {
   display: inline-block;
   color: white;
   font-size: 24px;
@@ -106,82 +113,119 @@ header p{
   text-align: center;
 }
 
-.container{
+.container {
   /*Your code here  */
   /* See documentation for mobile view */
+  display: grid;
+  grid-template-columns: 1fr 5fr 1fr;
+  row-gap: 30px;
 }
 
-.about, .method, .clients, .contact{
+.about,
+.method,
+.clients,
+.contact {
   /*Your code here */
   /* See documentation for mobile view */
+  grid-column: 2 / span 1;
 }
 
-.about-image, .method-image, .clients-image, .contact-image{
-   /*Your code here */
-   /* See documentation for mobile view */
+img {
+  width: 100%;
 }
 
-.about, .about-image{
+.about-image,
+.method-image,
+.clients-image,
+.contact-image {
   /*Your code here */
   /* See documentation for mobile view */
+  grid-column: 1 / -1;
+  max-height: 500px;
+  overflow: hidden;
 }
 
-.method, .method-image{
+.about,
+.about-image {
   /*Your code here */
   /* See documentation for mobile view */
+  grid-row: 3 / span 1;
 }
 
-.clients, .clients-image{
+.method,
+.method-image {
   /*Your code here */
   /* See documentation for mobile view */
+  grid-row: 4 / span 1;
 }
 
-.contact, .contact-image{
+.clients,
+.clients-image {
   /*Your code here */
   /* See documentation for mobile view */
+  grid-row: 5 / span 1;
 }
 
-.text-block{
-  background-color: rgba(255, 255, 255, .8);
+.contact,
+.contact-image {
+  /*Your code here */
+  /* See documentation for mobile view */
+  grid-row: 6 / span 1;
+}
+
+.text-block {
+  background-color: rgba(255, 255, 255, 0.8);
   border: 10px solid black;
   padding: 30px;
   position: relative;
   margin: auto;
   /*Your code here:*/
   /*Align the content in the center */
+  text-align: center;
+  max-height: 25vh;
+  overflow: scroll;
 }
 
-@media all and (min-width: 800px){
-
-  .container{
+@media all and (min-width: 800px) {
+  .container {
     /*Your code here */
     /* See documentation for desktop view */
+    grid-template-columns: 50px auto 500px auto 50px;
+    grid-template-rows: 70px 400px 400px 400px 400px 400px 100px;
   }
 
-  nav{
+  nav {
     background-color: #ddd;
     text-align: right;
     padding: 35px 0px;
     align-self: center;
   }
 
-   .about, .clients, .method-image, .contact-image {
+  .about,
+  .clients,
+  .method-image,
+  .contact-image {
     /*Your code here */
     /* See documentation for desktop view */
+    grid-column: 3 / span 2;
   }
 
-  .method, .contact, .about-image, .clients-image {
+  .method,
+  .contact,
+  .about-image,
+  .clients-image {
     /*Your code here */
     /* See documentation for desktop view */
+    grid-column: 2 / span 2;
   }
-}  /*End the media query*/
+} /*End the media query*/
 
-@media screen and (prefers-reduced-motion: reduce){
-  html{
+@media screen and (prefers-reduced-motion: reduce) {
+  html {
     scroll-behavior: auto; /* Removes scroll animation */
   }
 
-  .skip a{
+  .skip a {
     -webkit-transition: none;
     transition: none;
   }
